@@ -4,17 +4,32 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 
-// Default
+// == Default
 h1, h2, h3 {
 
 }
 
-
-// Header
+// == header
 header {
+  height: 500px;
+  background: url(../images/background-fosco.jpg);
+  background-size: auto 500px;
+  background-position: center top;
+  background-attachment: fixed;
+  position: relative;
+
   .logo{
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 70px;
 
+    img{
+      display: block;
+      margin: 0 auto;
+    }
   }
-}
 
-// Main Page
+}// end header
+
+// == Main Page
