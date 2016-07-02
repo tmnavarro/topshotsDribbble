@@ -8,8 +8,9 @@
  */
 angular
   .module('topshotsApp', [
+    'topshotsApp.dribble',
     'ngAnimate',
-    'ngCookies',  
+    'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
@@ -20,7 +21,12 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve: {
+          shots: function(dribbbleConf){
+            return dribbbleConf;
+          }
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',

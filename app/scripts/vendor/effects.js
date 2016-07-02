@@ -5,7 +5,7 @@ $(document).ready(function(){
       var scrollHeight = $(this).scrollTop();
 
       $('.logo').css({
-        'transform': 'translateY('+ scrollHeight/2 +'px)'
+        'transform': 'translateY('+ scrollHeight/1.5 +'px)'
       });
   };
 
