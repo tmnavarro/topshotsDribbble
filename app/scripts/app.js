@@ -3,12 +3,12 @@
 /**
  * @name topshotsApp
  * @description
- * # Módulo incial da aplicação
+ * # Módulo incial da aplicação, configuração de rotas para aplicação
  *
  */
 angular
   .module('topshotsApp', [
-    'topshotsApp.dribble',
+    'topshotsApp.dribbble',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -16,14 +16,18 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
+
+      .when('/:id?', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main',
         resolve: {
-          shots: function(dribbbleConf){
+          shots: function(dribbbleConf, $route){
+            return dribbbleConf.getShots($route.current.params.id);
+          },
+          dribbble: function(dribbbleConf){
             return dribbbleConf;
           }
         }
@@ -35,5 +39,10 @@ angular
       })
       .otherwise({
         redirectTo: '/'
+      });
+
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
       });
   });

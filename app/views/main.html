@@ -1,7 +1,13 @@
-<div class="col-sm-12">
-  <img src="./images/logo-dribbble.png" alt="Logo Dribbble">
-  <h1>PÁGINA INICIAL</h1>
-</div>
-<div class="col-sm-12" style="height: 1500px">
+<div class="col-sm-12 page-main">
+    <h1>PÁGINA INICIAL</h1>
+    <hr></hr>
+    <article class="col-sm-4 col-md-3 content-shot" ng-repeat="shot in main.shots">
+      <img class="img-responsive" src="{{ shot.images.normal }}" alt="{{ shot.title }}">
+    </article>
 
+    <section>
+      <ul>
+        <li><a ng-href="?id={{ main.links.next }}">Próxima</a></li>
+      </ul>
+    </section>
 </div>

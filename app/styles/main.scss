@@ -2,11 +2,18 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+@import 'https://fonts.googleapis.com/css?family=Hind+Madurai:300,400,700';
+// fontbase import
 
 
 // == Default
 h1, h2, h3 {
+  font-family: 'Hind Madurai', sans-serif;
+  font-weight: 700;
+}
 
+p{
+  font-family: 'Hind Madurai', sans-serif;
 }
 
 // == header
@@ -17,11 +24,24 @@ header {
   background-position: center top;
   background-attachment: fixed;
   position: relative;
+  overflow: hidden;
+
+  .parallax-back {
+    width: 100%;
+    height: 700px;
+    background: url(../images/p-back.png);
+    background-size: auto 500px;
+    background-position: center top;
+    background-attachment: fixed;
+    position: absolute;
+    z-index: 99;
+  }
 
   .logo{
     width: 100%;
     margin: 0 auto;
     position: absolute;
+    z-index: 999;
     top: 70px;
 
     img{
@@ -30,6 +50,22 @@ header {
     }
   }
 
+  .parallax-front{
+    width: 100%;
+    height: 700px;
+    background: url(../images/p-front.png);
+    background-size: auto 500px;
+    background-position: center top;
+    background-attachment: fixed;
+    position: absolute;
+    z-index: 9999;
+  }
+
 }// end header
 
 // == Main Page
+.page-main{
+  min-height: 100vh;
+  article{
+  }
+}
