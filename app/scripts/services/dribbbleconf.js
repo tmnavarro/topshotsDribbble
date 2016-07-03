@@ -23,7 +23,7 @@ angular.module('topshotsApp.dribbble', [])
       currentPage = $route.current.params.id > 0 ? parseInt($route.current.params.id) : 1;
 
       dribbble.links = {
-        back: currentPage > 1 ? currentPage-1 : null,
+        back: currentPage > 1 ? currentPage-1 : false,
         next: currentPage > 1 ? currentPage+1 : 2,
       }
     }

@@ -12,7 +12,7 @@ angular.module('topshotsApp')
     var vm = this;
 
     vm.links = dribbble.links;
-    console.log(vm.links);
+    console.log(shots);
     vm.shots = shots;
 
   });

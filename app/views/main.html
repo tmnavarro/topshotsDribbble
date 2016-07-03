@@ -3,11 +3,19 @@
     <hr></hr>
     <article class="col-sm-4 col-md-3 content-shot" ng-repeat="shot in main.shots">
       <img class="img-responsive" src="{{ shot.images.normal }}" alt="{{ shot.title }}">
+      <h3>{{ shot.title }}</h3>
+      <strog>Views {{ shot.likes_count }}</strog>
+      <strog ng-if="shot.user.links.web">SITE {{ shot.user.links.web  }}</strog>
+      <strog ng-if="shot.user.links.twitter">SITE {{ shot.user.links.twitter  }}</strog>
+      <div ng-bind-html="shot.description"></div>
     </article>
 
-    <section>
+    <nav class="col-sm-12 pagination">
       <ul>
-        <li><a ng-href="?id={{ main.links.next }}">Próxima</a></li>
+        <li ng-show="{{ main.links.back }}" class="back-page"><a ng-href="?id={{ main.links.back }}">Anterior</a></li>
+        <li class="current-page"><a ng-href="?id={{ main.links.next-1 }}">{{ main.links.next-1 }}</a></li>
+        <li ng-repeat="i in [0,1,2,3,4,5,6]"><a ng-href="?id={{ main.links.next+i }}">{{ main.links.next+i }}</a></li>
+        <li class="next-page"><a ng-href="?id={{ main.links.next+7 }}">Próxima</a></li>
       </ul>
-    </section>
+    </nav>
 </div>
