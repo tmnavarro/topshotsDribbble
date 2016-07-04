@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  // Calback scroll callParallax
   var callParallax = function(){
       // Altura do Scroll
       var scrollHeight = $(this).scrollTop();
@@ -20,13 +19,16 @@ $(document).ready(function(){
 
       //Ativação de animação para galeria
       if(scrollHeight > 450){
+
         $('.page-main').find('article').each(function(i){
+
+
           $('.page-main').find('article').eq(i).addClass('is-showing')
         });
       }
+
   };
 
   // Evento Scroll Parallax
   $(window).scroll(callParallax);
-
 });

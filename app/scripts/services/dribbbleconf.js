@@ -25,6 +25,7 @@ angular.module('topshotsApp.dribbble', [])
       dribbble.links = {
         back: currentPage > 1 ? currentPage-1 : false,
         next: currentPage > 1 ? currentPage+1 : 2,
+
       }
     }
 
@@ -32,7 +33,7 @@ angular.module('topshotsApp.dribbble', [])
     dribbble.getShots = function(currentPage){
       var deferred = $q.defer();
       // Get shots return
-      $http.get(api.url+'shots/?page='+currentPage+'&per_page=20&access_token='+api.token)
+      $http.get(api.url+'shots/?page='+currentPage+'&per_page=12&access_token='+api.token)
         .success(function(shots){
           setCurrentPage();
           return deferred.resolve(shots);
