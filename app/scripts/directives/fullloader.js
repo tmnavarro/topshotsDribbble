@@ -1,10 +1,10 @@
 'use strict';
 
 /**
- * @ngdoc directive
- * @name topshotsApp.directive:fullLoader
+ * @name directive:fullLoader
+ * @module topshotsApp
  * @description
- * # fullLoader
+ * # Efeito de carregamento quando alterada a rota atual
  */
 angular.module('topshotsApp')
   .directive('fullLoader', function ($rootScope) {
@@ -14,10 +14,12 @@ angular.module('topshotsApp')
       link: function postLink(scope, element) {
         scope.isRouteLoading = false;
 
+        // Ativa visualização loader view na alteração da routa
         $rootScope.$on('$routeChangeStart', function(){
           scope.isRouteLoading = true;
         });
 
+        // Desativa loader no fim do carregamento da rota
         $rootScope.$on('$routeChangeSuccess', function(){
           scope.isRouteLoading = false;
         });

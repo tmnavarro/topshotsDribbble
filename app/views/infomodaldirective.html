@@ -1,0 +1,89 @@
+<!--
+  * @View: infoModalDirective
+  * @Use: app/directives/infoModalDirective.js
+-->
+
+<!-- BEGIN: Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
+  <div class="modal-dialog" role="document">
+    <!-- BEGIN: modal-content -->
+    <div class="modal-content">
+      <!-- BEGIN: modal-header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <!-- END: modal-header -->
+
+      <!-- BEGIN: modal-body -->
+      <div class="modal-body">
+        <div class="row">
+          <!-- BEGIN: col-md-8 imagem original -->
+          <div class="col-md-12">
+            <img class="img-responsive" src="{{ main.currentShot.images.hidpi }}">
+            <div class="shot-infos">
+              <strong><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ main.currentShot.likes_count }}</strong>
+              <strong><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>{{ main.currentShot.comments_count }}</strong>
+              <strong><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>{{ main.currentShot.views_count }}</strong>
+            </div>
+          </div>
+          <!-- END: col-md-8 imagem original -->
+
+          <!-- BEGIN: col-md-4 descricão e titulo -->
+          <div class="col-md-12">
+            <h3 class="" id="infoModalLabel">
+                {{ main.currentShot.title }} </br>
+                <small>Criado em {{ main.currentShot.created_at | date : format : timezone }} por {{ main.currentShot.user.name }}</small>
+            </h3>
+            <div ng-bind-html="main.currentShot.description"></div>
+          </div>
+          <!-- END: col-md-4 descricão e titulo -->
+
+        </div>
+
+        <hr></hr>
+
+        <!-- BEGIN: row user-content -->
+        <div class="row user-content">
+          <div class="col-md-8 col-md-offset-2">
+            <!-- BEGIN: avatar usuario -->
+            <div class="col-sm-4">
+              <img class="img-circle user-avatar" src="{{ main.currentShot.user.avatar_url }}" alt="Avatar {{ main.currentShot.user.name }}">
+            </div>
+            <!-- END: avatar usuario -->
+
+            <!-- BEGIN: user-infos -->
+            <div class="col-sm-8 user-infos">
+              <h4 class="text-center">{{ main.currentShot.user.name }}</h4>
+
+              <div ng-bind-html="main.currentShot.user.bio"></div>
+
+              <hr></hr>
+              <ul>
+                <li ng-if="main.currentShot.user.links.web"><a href="{{ main.currentShot.user.links.web }}" target="_blank">
+                  <span class="glyphicon glyphicon-globe"></span>
+                </a></li>
+                <li ng-if="main.currentShot.user.links.twitter"><a href="{{ main.currentShot.user.links.twitter }}" target="_blank">
+                  <img src="./images/icon-twitter.svg" alt="Icone Twitter" width="30">
+                </a></li>
+                <li ><a href="{{ main.currentShot.user.html_url }}" target="_blank">
+                  <img src="./images/icon-dribbble.svg" alt="Icone Dribbble" width="30">
+                </a></li>
+              </ul>
+
+            </div>
+            <!-- END: user-infos -->
+
+          </div>
+        </div>
+        <!-- END: row user-content -->
+
+      </div>
+      <!-- END: modal-body -->
+
+      <div class="modal-footer"></div>
+
+    </div>
+    <!-- END: modal-content -->
+  </div>
+</div>
+<!-- END: Modal -->

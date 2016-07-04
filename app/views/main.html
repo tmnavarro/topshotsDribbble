@@ -1,22 +1,35 @@
+<!--
+  * @View: Main View
+  * @Use: app/app.js
+  * @Controller: MainCtrl
+-->
+
+<!-- BEGIN: page-main -->
 <div class="col-sm-12 page-main">
+    <!-- BEGIN: Titulo pagina -->
     <h1>MELHORES SHOTS <small>Página {{ main.links.next-1 == 1 ? 'Inicial' : main.links.next-1 }}</small></h1>
     <hr></hr>
+    <!-- END: Titulo pagina -->
 
     <!-- BEGIN: Shots -->
     <article class="col-sm-6 col-md-4" ng-repeat="shot in main.shots">
       <div class="content-shot">
         <img class="img-responsive" src="{{ shot.images.normal }}" alt="{{ shot.title }}">
+        <!-- BEGIN: shot-description -->
         <div class="shot-description">
           <h3>{{ shot.title }} </br>
               <small>Criado em {{ shot.created_at | date : format : timezone }} por {{ shot.user.name }}</small>
           </h3>
+          <!-- BEGIN: shot-infos -->
           <div class="shot-infos">
             <strong><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ shot.likes_count }}</strong>
             <strong><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>{{ shot.comments_count }}</strong>
             <strong><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>{{ shot.views_count }}</strong>
             <button class="btn btn-info" ng-click="main.openModal(shot.id)">Mais informações <span class="glyphicon glyphicon-share-alt"></span></button>
           </div>
+          <!-- END: shot-infos -->
         </div>
+        <!-- END: shot-description -->
       </div>
     </article>
     <!-- END: Shots -->
@@ -24,65 +37,13 @@
     <!-- BEGIN: Pagination -->
     <nav class="col-sm-12 pagination">
       <ul>
-        <li ng-show="{{ main.links.back }}" class="back-page"><a ng-href="?id={{ main.links.back }}">Anterior</a></li>
+        <li ng-show="{{ main.links.back }}" class="back-page"><a ng-href="?id={{ main.links.back }}"><span class="glyphicon glyphicon-chevron-left"></span> Anterior</a></li>
         <li class="current-page"><a ng-href="?id={{ main.links.next-1 }}">{{ main.links.next-1 }}</a></li>
-        <li ng-repeat="i in [0,1,2,3,4,5,6]"><a ng-href="?id={{ main.links.next+i }}">{{ main.links.next+i }}</a></li>
-        <li class="next-page"><a ng-href="?id={{ main.links.next+7 }}">Próxima</a></li>
+        <li ng-repeat="i in [0,1,2,3]"><a ng-href="?id={{ main.links.next+i }}">{{ main.links.next+i }}</a></li>
+        <li class="next-page"><a ng-href="?id={{ main.links.next+4 }}">Próximas <span class="glyphicon glyphicon-chevron-right"></span></a></li>
       </ul>
     </nav>
     <!-- END: Pagination -->
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-
-
-        <div class="row">
-          <div class="col-md-8">
-            <img class="img-responsive" src="{{ main.currentShot.images.hidpi }}">
-            <div class="shot-infos">
-              <strong><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ main.currentShot.likes_count }}</strong>
-              <strong><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>{{ main.currentShot.comments_count }}</strong>
-              <strong><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>{{ main.currentShot.views_count }}</strong>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <h3 class="" id="infoModalLabel">
-                {{ main.currentShot.title }} </br>
-                <small>Criado em {{ main.currentShot.created_at | date : format : timezone }} por {{ main.currentShot.user.name }}</small>
-            </h3>
-            <div ng-bind-html="main.currentShot.description"></div>
-          </div>
-        </div>
-        <hr></hr>
-        <div class="row user-content">
-          <div class="col-md-8 col-md-offset-2">
-            <div class="col-sm-4">
-              <img class="img-circle user-avatar" src="{{ main.currentShot.user.avatar_url }}" alt="Avatar {{ main.currentShot.user.name }}">
-            </div>
-            <div class="col-sm-8 user-infos">
-              <h4>{{ main.currentShot.user.name }}</h4>
-              <ul>
-                <li ng-if="main.currentShot.user.location"><span class="glyphicon glyphicon-map-marker"></span>{{ main.currentShot.user.location }}</li>
-                <li ng-if="main.currentShot.user.links.web"><span class="glyphicon glyphicon-globe"></span>{{ main.currentShot.user.links.web }}</li>
-                <li ng-if="main.currentShot.user.links.twitter"><span class="glyphicon glyphicon-map-marker"></span>{{ main.currentShot.user.links.twitter }}</li>
-              </ul>
-              <div ng-bind-html="main.currentShot.user.bio"></div>
-
-              <a class="btn btn-default" href="{{ main.currentShot.user.html_url }}" target="_blank"><strong>ir</strong> <img src="./images/logo-dribbble.png" width="85"></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="modal-footer"></div>
-    </div>
-  </div>
-</div>
+<info-modal></info-modal>

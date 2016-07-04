@@ -1,22 +1,21 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name topshotsappApp.controller:MainCtrl
+ * @name controller:MainCtrl
+ * @module topshotsApp
  * @description
- * # MainCtrl
- * Controller of the topshotsappApp
+ * # Controller página principal
  */
 angular.module('topshotsApp')
-  .controller('MainCtrl', function ($q, $rootScope, shots, dribbble) {
+  .controller('MainCtrl', function (shots, dribbble) {
     var vm = this;
-
     vm.links = dribbble.links;
-    console.log(shots);
     vm.shots = shots;
 
+    // Inicia currentShot com obj vázio
     vm.currentShot = {};
 
+    // Função ativa vizualização modal com informações do currentShot
     vm.openModal = function(id){
       var currentShot = shots.filter(function(shot){
         return shot.id === parseInt(id) ? shot : false;
