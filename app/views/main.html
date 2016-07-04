@@ -7,15 +7,15 @@
       <div class="content-shot">
         <img class="img-responsive" src="{{ shot.images.normal }}" alt="{{ shot.title }}">
         <div class="shot-description">
-          <h3>{{ shot.title }}</h3>
+          <h3>{{ shot.title }} </br>
+              <small>Criado em {{ shot.created_at | date : format : timezone }} por {{ shot.user.name }}</small>
+          </h3>
           <div class="shot-infos">
             <strong><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ shot.likes_count }}</strong>
             <strong><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>{{ shot.comments_count }}</strong>
             <strong><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>{{ shot.views_count }}</strong>
             <button class="btn btn-info" ng-click="main.openModal(shot.id)">Mais informações <span class="glyphicon glyphicon-share-alt"></span></button>
           </div>
-          <!--
-          <div class="icon-click" ng-if="$index === 0"><img src="./images/click.svg" alt="{{ shot }}"></div> -->
         </div>
       </div>
     </article>
@@ -47,28 +47,43 @@
         <div class="row">
           <div class="col-md-8">
             <img class="img-responsive" src="{{ main.currentShot.images.hidpi }}">
-          </div>
-          <div class="col-md-4">
-            <h4 class="modal-title" id="infoModalLabel">{{ main.currentShot.title }}</h4>
-            <div ng-bind-html="main.currentShot.description"></div>
             <div class="shot-infos">
               <strong><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ main.currentShot.likes_count }}</strong>
               <strong><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>{{ main.currentShot.comments_count }}</strong>
               <strong><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>{{ main.currentShot.views_count }}</strong>
             </div>
           </div>
-        </div>
+          <div class="col-md-4">
+            <h3 class="" id="infoModalLabel">
+                {{ main.currentShot.title }} </br>
+                <small>Criado em {{ main.currentShot.created_at | date : format : timezone }} por {{ main.currentShot.user.name }}</small>
+            </h3>
+            <div ng-bind-html="main.currentShot.description"></div>
 
-        <div class="row">
+          </div>
+        </div>
+        <hr></hr>
+        <div class="row user-infos">
           <div class="col-md-8 col-md-offset-2">
-            <img src="{{ main.currentShot.user.avatar_url }}" alt="">
+            <div class="col-sm-4">
+              <img class="img-circle user-avatar" src="{{ main.currentShot.user.avatar_url }}" alt="Avatar {{ main.currentShot.user.name }}">
+            </div>
+            <div class="col-sm-8">
+              <h4>{{ main.currentShot.user.name }}</h4>
+              <ul>
+                <li ng-if="main.currentShot.user.location"><span class="glyphicon glyphicon-map-marker"></span>{{ main.currentShot.user.location }}</li>
+                <li ng-if="main.currentShot.user.links.web"><span class="glyphicon glyphicon-globe"></span>{{ main.currentShot.user.links.web }}</li>
+                <li ng-if="main.currentShot.user.links.twitter"><span class="glyphicon glyphicon-map-marker"></span>{{ main.currentShot.user.links.twitter }}</li>
+              </ul>
+              <div ng-bind-html>{{ main.currentShot.user.bio }}</div>
+
+              <a class="btn btn-default" href="{{ main.currentShot.user.html_url }}" target="_blank"><strong>ir</strong> <img src="./images/logo-dribbble.png" width="85"></a>
+            </div>
           </div>
         </div>
 
       </div>
-      <div class="modal-footer">
-        <a class="btn btn-default" href="{{ main.currentShot.html_url }}" target="_blank"><strong>Ir</strong> <img src="./images/logo-dribbble.png" width="85"></a>
-      </div>
+      <div class="modal-footer"></div>
     </div>
   </div>
 </div>
