@@ -22,25 +22,33 @@ p {
 
 .pagination {
   ul {
+    padding: 0;
+    margin: 20px 0;
+    display: block;
     list-style: none;
+    text-align: center;
     li {
       display: inline-block;
-      min-width: 40px;
-      height: 40px;
-      line-height: 30px;
-      padding: 5px;
       margin: 0 5px;
       border: 1px solid #c3c3c3;
-      text-align: center;
       font-size: 18px;
+      a{
+        min-width: 40px;
+        line-height: 40px;
+        padding: 10px 15px;
+      }
       &.back-page{
-        padding-left: 15px;
+        a{
+          padding-left: 20px;
+        }
       }
       &.current-page {
         border: 1px solid #000;
       }
       &.next-page{
-        padding-right: 15px
+        a{
+          padding-right: 20px
+        }
       }
     }
   }
@@ -92,7 +100,44 @@ header {
 
 }// END: header
 
-// BEGIN: Main Page
+
+// BEGIN: loader
+.loader {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 99999;
+
+  @keyframes dash {
+  	to {
+  		stroke-dashoffset: 0;
+  	}
+  }
+  svg{
+    margin-top: 100px;
+    @media (min-width: 768px) {
+      margin-top: -150px;
+    }
+    @media (min-width: 992px) {
+      margin-top: -250px;
+    }
+    @media (min-width: 1200px) {
+      margin-top: -350px;
+    }
+
+    .loader-svg-animate{
+      stroke-dasharray: 1000;
+    	stroke-dashoffset: 1000;
+    	animation: dash 4s linear forwards infinite;
+    	animation-delay: 1s;
+    }
+  }
+
+}//END: loader
+
+// BEGIN: main Page
 .page-main {
   background: rgb(246, 246, 246);
   min-height: 100vh;
@@ -197,11 +242,48 @@ header {
       }
     }
 
-    .user-infos {
+    .user-content {
       .user-avatar {
         width: 90px;
         display: block;
-        margin: 0 auto;
+        margin: 20px auto;
+      }
+      .user-infos {
+        background: #f8f8f8;
+        padding: 0px 15px 15px;
+        border-radius: 10px;
+        &:after{
+          bottom: 100%;
+        	left: 50%;
+        	border: solid transparent;
+        	content: " ";
+        	height: 0;
+        	width: 0;
+        	position: absolute;
+        	pointer-events: none;
+        	border-color: rgba(136, 183, 213, 0);
+        	border-bottom-color: rgb(242, 242, 242);
+        	border-width: 20px;
+        	margin-left: -30px;
+          margin-top: 20px;
+
+          @media (min-width: 768px){
+            bottom: auto;
+          	left: auto;
+            right: 100%;
+          	top: 40%;
+          	border: solid transparent;
+          	pointer-events: none;
+          	border-color: rgba(242, 242, 242, 0);
+          	border-right-color:  rgb(242, 242, 242);
+          	border-width: 20px;
+          	margin-top: -30px;
+          }
+        }
+        .btn {
+          margin: 15px;
+          display: block;
+        }
       }
     }
   }

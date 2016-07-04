@@ -26,8 +26,8 @@ angular.module('topshotsApp.dribbble', [])
         back: currentPage > 1 ? currentPage-1 : false,
         next: currentPage > 1 ? currentPage+1 : 2,
 
-      }
-    }
+      };
+    };
 
     // Get Shots with pages
     dribbble.getShots = function(currentPage){

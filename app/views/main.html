@@ -59,23 +59,22 @@
                 <small>Criado em {{ main.currentShot.created_at | date : format : timezone }} por {{ main.currentShot.user.name }}</small>
             </h3>
             <div ng-bind-html="main.currentShot.description"></div>
-
           </div>
         </div>
         <hr></hr>
-        <div class="row user-infos">
+        <div class="row user-content">
           <div class="col-md-8 col-md-offset-2">
             <div class="col-sm-4">
               <img class="img-circle user-avatar" src="{{ main.currentShot.user.avatar_url }}" alt="Avatar {{ main.currentShot.user.name }}">
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-8 user-infos">
               <h4>{{ main.currentShot.user.name }}</h4>
               <ul>
                 <li ng-if="main.currentShot.user.location"><span class="glyphicon glyphicon-map-marker"></span>{{ main.currentShot.user.location }}</li>
                 <li ng-if="main.currentShot.user.links.web"><span class="glyphicon glyphicon-globe"></span>{{ main.currentShot.user.links.web }}</li>
                 <li ng-if="main.currentShot.user.links.twitter"><span class="glyphicon glyphicon-map-marker"></span>{{ main.currentShot.user.links.twitter }}</li>
               </ul>
-              <div ng-bind-html>{{ main.currentShot.user.bio }}</div>
+              <div ng-bind-html="main.currentShot.user.bio"></div>
 
               <a class="btn btn-default" href="{{ main.currentShot.user.html_url }}" target="_blank"><strong>ir</strong> <img src="./images/logo-dribbble.png" width="85"></a>
             </div>
