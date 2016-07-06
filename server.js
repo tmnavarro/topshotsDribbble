@@ -1,6 +1,8 @@
 var express = require('express');
 
 var app = express();
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 
 app.use('/app', express.static(__dirname + '/app'));
 app.use('/scripts', express.static(__dirname + '/app/scripts'));
@@ -13,6 +15,7 @@ app.get('/', function(req, res){
 	res.sendfile('app/index.html');
 });
 
-app.listen('3000', function(){
-	console.log('Server running');
+
+server.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", server_port " + port )
 });
