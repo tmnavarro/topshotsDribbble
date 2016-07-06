@@ -42,6 +42,7 @@
   },
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "karma start test\\karma.conf.js"
   },
   "dependencies": {
