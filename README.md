@@ -8,7 +8,3 @@ Yoeman com AngularJS.
  - Grunt
  - Sass
  - Dribbble API v1
-
-## Testes
-
-  Teste automatizados com Karma e Jasmine
