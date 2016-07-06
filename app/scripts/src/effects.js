@@ -1,6 +1,5 @@
-'use strict';
-
 $(document).ready(function(){
+  'use strict';
   // Calback scroll callParallax
   var callParallax = function(){
       // Altura do Scroll
