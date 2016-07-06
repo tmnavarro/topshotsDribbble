@@ -1,6 +1,6 @@
 # TOPSHOTS Dribbble
 
-Webapp para equisição dos melhores trabalhos postados no Dribbble
+Webapp para requisição dos melhores trabalhos postados no Dribbble
 
 ## Ferramentas Utilizadas
 
