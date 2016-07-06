@@ -19,6 +19,12 @@ angular
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
 
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+
       .when('/:id?', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
@@ -32,11 +38,7 @@ angular
           }
         }
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
+
       .otherwise({
         redirectTo: '/'
       });

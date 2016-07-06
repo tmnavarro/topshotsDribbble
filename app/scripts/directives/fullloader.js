@@ -11,7 +11,7 @@ angular.module('topshotsApp')
     return {
       templateUrl: 'views/loaderdirective.html',
       restrict: 'E',
-      link: function postLink(scope, element) {
+      link: function postLink(scope) {
         scope.isRouteLoading = false;
 
         // Ativa visualização loader view na alteração da routa
