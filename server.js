@@ -13,6 +13,4 @@ app.get('/', function(req, res){
 	res.sendfile('app/index.html');
 });
 
-app.listen('3000', function(){
-	console.log('Server running');
-});
+app.listen(process.env.PORT || 5000);
