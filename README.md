@@ -11,4 +11,14 @@ Yoeman com AngularJS.
 
 
 ##Veja em funcionamento
-[a link](https://thoshotsdribbble-tnavarro.rhcloud.com)
+[Sistema no online](https://thoshotsdribbble-tnavarro.rhcloud.com)
+
+##Instalação local
+
+  - Faça o clone do projeto para sua máquina
+  - Instale as dependências com os comandos:
+   - bower install
+   - npm install
+  - Execute o projeto com Node ou Grunt
+   - npm start
+   - grunt serve
