@@ -80,7 +80,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
-              connect.static('public'),
+              connect.static('./public'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
@@ -99,7 +99,7 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
-              connect.static('public'),
+              connect.static('./public'),
               connect.static('test'),
               connect().use(
                 '/bower_components',
@@ -230,8 +230,8 @@ module.exports = function (grunt) {
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
-        cssDir: 'public/styles',
-        generatedImagesDir: 'public/images/generated',
+        cssDir: './public/styles',
+        generatedImagesDir: './public/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
